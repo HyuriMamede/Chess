@@ -3,7 +3,6 @@ package Chess;
 import Chess.pieces.Bishop;
 import Chess.pieces.Rook;
 import boardgame.Board;
-import boardgame.Position;
 
 public class ChessMatch {
 
@@ -25,10 +24,14 @@ public class ChessMatch {
 		}
 		return mat;
 	}
+
+	private void placeNewPiece(char column, int row, ChessPiece piece) {
+		board.placePiece(piece, new ChessPosition(column, row).toPostion());
+	}
 	
 	private void initialSetup() {
-		board.placePiece(new Rook(board, Color.WHITE), new Position (3,1));
-		board.placePiece(new Bishop(board, Color.BLACK), new Position (3,1));
+		placeNewPiece('a', 2,new Rook(board, Color.WHITE));
+		placeNewPiece('b', 1,new Bishop(board, Color.BLACK));
 	}
 	
 }
